@@ -1,0 +1,54 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: OpTreeHub
+    network: mumbai
+    source:
+      address: "0xE5eC5849CfdB380e469529AebBc04b1fE20CBEBc"
+      abi: OpTreeHub
+      startBlock: 36658162
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BaseInitialized
+        - BaseRoyaltySet
+        - DerivedNFTInitialized
+        - DerivedRuleModuleWhitelisted
+        - EmergencyAdminSet
+        - GovernanceSet
+        - ModuleBaseConstructed
+        - NFTRoyaltySet
+        - NewCollectionCreated
+        - NewNFTCreated
+        - StateSet
+      abis:
+        - name: OpTreeHub
+          file: ./abis/OpTreeHub.json
+      eventHandlers:
+        - event: BaseInitialized(string,string,uint256)
+          handler: handleBaseInitialized
+        - event: BaseRoyaltySet(indexed address,indexed uint256,indexed uint256,uint256)
+          handler: handleBaseRoyaltySet
+        - event: DerivedNFTInitialized(indexed uint256,indexed uint256,indexed uint256,uint256)
+          handler: handleDerivedNFTInitialized
+        - event: DerivedRuleModuleWhitelisted(address,bool,uint256)
+          handler: handleDerivedRuleModuleWhitelisted
+        - event: EmergencyAdminSet(indexed address,indexed address,indexed address,uint256)
+          handler: handleEmergencyAdminSet
+        - event: GovernanceSet(indexed address,indexed address,indexed address,uint256)
+          handler: handleGovernanceSet
+        - event: ModuleBaseConstructed(indexed address,indexed address,uint256)
+          handler: handleModuleBaseConstructed
+        - event: NFTRoyaltySet(indexed address,indexed uint256,indexed uint256,uint256)
+          handler: handleNFTRoyaltySet
+        - event: NewCollectionCreated(indexed address,indexed uint256,indexed uint256,uint256,uint256,uint256,uint256,bytes32,address,string,address,uint256)
+          handler: handleNewCollectionCreated
+        - event: NewNFTCreated(indexed uint256,indexed uint256,indexed uint256,uint256,uint256,uint256,uint256,string)
+          handler: handleNewNFTCreated
+        - event: StateSet(indexed address,indexed uint8,indexed uint8,uint256)
+          handler: handleStateSet
+      file: ./src/op-tree-hub.ts

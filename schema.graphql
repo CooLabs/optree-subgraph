@@ -1,0 +1,129 @@
+type BaseInitialized @entity(immutable: true) {
+  id: Bytes!
+  name: String! # string
+  symbol: String! # string
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BaseRoyaltySet @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  prevMaxBaseRoyalty: BigInt! # uint256
+  newMaxBaseRoyalty: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DerivedNFTInitialized @entity(immutable: true) {
+  id: Bytes!
+  collectionId: BigInt! # uint256
+  profileId: BigInt! # uint256
+  pubId: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DerivedRuleModuleWhitelisted @entity(immutable: true) {
+  id: Bytes!
+  derivedRuleModule: Bytes! # address
+  whitelist: Boolean! # bool
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EmergencyAdminSet @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  oldEmergencyAdmin: Bytes! # address
+  newEmergencyAdmin: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernanceSet @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  prevGovernance: Bytes! # address
+  newGovernance: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ModuleBaseConstructed @entity(immutable: true) {
+  id: Bytes!
+  lensHub: Bytes! # address
+  opTreeHub: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NFTRoyaltySet @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  prevMaxBaseRoyalty: BigInt! # uint256
+  newMaxBaseRoyalty: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewCollectionCreated @entity(immutable: true) {
+  id: Bytes!
+  collectionOwner: Bytes! # address
+  collectionId: BigInt! # uint256
+  profileId: BigInt! # uint256
+  pubId: BigInt! # uint256
+  baseRoyalty: BigInt! # uint256
+  maxSupply: BigInt! # uint256
+  mintDeadline: BigInt! # uint256
+  whitelistRootHash: Bytes! # bytes32
+  derivedCollectionAddr: Bytes! # address
+  collInfoURI: String! # string
+  derivedRuleModule: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewNFTCreated @entity(immutable: true) {
+  id: Bytes!
+  tokenId: BigInt! # uint256
+  collectionId: BigInt! # uint256
+  profileId: BigInt! # uint256
+  profileIdPointed: BigInt! # uint256
+  pubIdPointed: BigInt! # uint256
+  derivedFrom: BigInt! # uint256
+  nftRoyalty: BigInt! # uint256
+  nftInfoURI: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StateSet @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  prevState: Int! # uint8
+  newState: Int! # uint8
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
